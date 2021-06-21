@@ -719,6 +719,11 @@ KBUILD_CFLAGS	+= -mcpu=cortex-a76.cortex-a55 -mtune=cortex-a76.cortex-a55
 endif
 ifeq ($(cc-name),clang)
 KBUILD_CFLAGS   += -O3
+KBUILD_AFLAGS	+= -O3
+KBUILD_LDFLAGS	+= -O3
+KBUILD_LDFLAGS	+= --lto-O2
+KBUILD_CFLAGS	+= -mllvm -inline-threshold=600
+KBUILD_CFLAGS	+= -mllvm -inlinehint-threshold=750
 KBUILD_CFLAGS	+= $(call cc-option, -mcpu=cortex-a55 -mtune=cortex-a55)
 endif
 endif
